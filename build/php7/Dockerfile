@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y \
     && pecl install xdebug-2.6.0 \
     && pecl install yaf-3.0.7
 
-COPY ["./extensions/yaf.ini","extensions/redis.ini","extensions/xdebug.ini","/usr/local/etc/php/conf.d/"]
+# COPY ["./extensions/yaf.ini","extensions/redis.ini","extensions/xdebug.ini","/usr/local/etc/php/conf.d/"]

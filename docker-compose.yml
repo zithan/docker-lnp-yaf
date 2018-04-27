@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 
 services:
 
@@ -10,8 +10,8 @@ services:
         - "443:443"
       volumes:
         - /Volumes/zithan4card/z4code:/usr/share/nginx/html
-        - /Volumes/zithan4card/z4nginx/xjw/conf.d:/etc/nginx/conf.d
-        - /var/log/nignx:/var/log/nginx
+        - /Users/qang/z4docker/config-files/nginx/conf.d:/etc/nginx/conf.d
+        - /Users/qang/z4docker/config-files/logs/nginx/:/var/log/nginx
       links:
         - "php7"
 
@@ -21,10 +21,14 @@ services:
         context: ./build/php7
       ports:
         - "9000"
+      volumes:
+        - /Users/qang/z4docker/config-files/php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
+        - /Users/qang/z4docker/config-files/php/php-fpm.d/www.conf:/usr/local/php/etc/php-fpm.d/www.conf
+        - /Users/qang/z4docker/config-files/php/php.ini:/usr/local/etc/php/php.ini
+        - /Users/qang/z4docker/config-files/logs/php/php-fpm.log:/usr/local/php/var/log/php-fpm.log
+        - /Volumes/zithan4card/z4code:/usr/share/nginx/html
       links:
         - "redis"
-      volumes:
-        - /Volumes/zithan4card/z4code:/usr/share/nginx/html
 
   # Redis
   redis:
@@ -32,5 +36,5 @@ services:
       ports:
         - "6379:6379"
       volumes:
-        - /Volumes/zithan4card/z4redis/xjw/config/redis.conf:/usr/local/etc/redis/redis.conf
-        - /var/log/redis/redis.log:/var/log/redis/redis.log
+        - /Users/qang/z4docker/config-files/redis/redis.conf:/usr/local/etc/redis/redis.conf
+        - /Users/qang/z4docker/config-files/logs/redis.log:/var/log/redis/redis.log
