@@ -20,7 +20,7 @@ services:
       build:
         context: ./build/php7
       ports:
-        - "9000"
+        - "9000:9000"
       volumes:
         - ./config-files/php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
         - ./config-files/php/php-fpm.d/www.conf:/usr/local/php/etc/php-fpm.d/www.conf
