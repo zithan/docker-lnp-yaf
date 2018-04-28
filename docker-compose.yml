@@ -9,9 +9,9 @@ services:
         - "80:80"
         - "443:443"
       volumes:
+        - ./config-files/nginx/conf.d:/etc/nginx/conf.d
+        - ./config-files/logs/nginx/:/var/log/nginx
         - /Volumes/zithan4card/z4code:/usr/share/nginx/html
-        - /Users/qang/z4docker/config-files/nginx/conf.d:/etc/nginx/conf.d
-        - /Users/qang/z4docker/config-files/logs/nginx/:/var/log/nginx
       links:
         - "php7"
 
@@ -22,10 +22,10 @@ services:
       ports:
         - "9000"
       volumes:
-        - /Users/qang/z4docker/config-files/php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
-        - /Users/qang/z4docker/config-files/php/php-fpm.d/www.conf:/usr/local/php/etc/php-fpm.d/www.conf
-        - /Users/qang/z4docker/config-files/php/php.ini:/usr/local/etc/php/php.ini
-        - /Users/qang/z4docker/config-files/logs/php/php-fpm.log:/usr/local/php/var/log/php-fpm.log
+        - ./config-files/php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
+        - ./config-files/php/php-fpm.d/www.conf:/usr/local/php/etc/php-fpm.d/www.conf
+        - ./config-files/php/php.ini:/usr/local/etc/php/php.ini
+        - ./config-files/logs/php/php-fpm.log:/usr/local/php/var/log/php-fpm.log
         - /Volumes/zithan4card/z4code:/usr/share/nginx/html
       links:
         - "redis"
@@ -36,5 +36,5 @@ services:
       ports:
         - "6379:6379"
       volumes:
-        - /Users/qang/z4docker/config-files/redis/redis.conf:/usr/local/etc/redis/redis.conf
-        - /Users/qang/z4docker/config-files/logs/redis.log:/var/log/redis/redis.log
+        - ./config-files/redis/redis.conf:/usr/local/etc/redis/redis.conf
+        - ./config-files/logs/redis.log:/var/log/redis/redis.log
